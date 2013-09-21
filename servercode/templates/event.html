@@ -38,18 +38,10 @@
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1 align="center">Enter your Steam Account Handles</h1>
-        <br>
-        <div align="center">
-          <form action="/event" method="POST">
-          <div align="center" id="input">
-              <input type="text" name="text" class="form-control" placeholder="Username">
-          </div>
-          <input type="submit" class="btn btn-lg btn-primary" name="steamids"></input>
-          </form>
-
-          <button class="btn btn-lg btn-primary" onclick="add_fields();">+</button>
-        </div>
+        <h1 align="center">Games in Common</h1>
+          {% for game in games %}
+            <img src="{{ games[game]['logo'] }}" />
+          {% endfor %}
         </p>
       </div>
 

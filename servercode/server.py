@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import url_for, redirect
+from flask import url_for, redirect, request
 from flask import render_template
 from flask.ext.mongoengine import MongoEngine
 import urllib2
@@ -34,6 +34,13 @@ def hello_world():
 @app.route('/index')
 def index():
 	return "hello world!"
+
+@app.route('/event', methods=['POST'])
+def event():
+	profile_urls = request.form.getlist('text')
+	games = get_common_games(get_userlist(profile_urls))
+	return render_template("event.html", games=games)
+
 
 def get_user_id(steam_community_url):
 #returns a tuple containing the number representing a user's community id and the display name of the user
