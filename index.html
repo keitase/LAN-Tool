@@ -10,7 +10,7 @@
     <title>Navbar Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="navbar.css" rel="stylesheet">
@@ -26,9 +26,8 @@
  
     <script>
       function add_fields(){
-        var newInput = document.createElement('span')
-        newInput.innerHTML = '<input type="text" class="form-control" placeholder="Username">';
-        document.getElementById('input').appendChild(newInput);
+        var input = '<input type="text" class="form-control" placeholder="http://steamcommunity.com/id/">';
+        document.getElementById('input').innerHTML += input;
       }
     </script>
   </head>
