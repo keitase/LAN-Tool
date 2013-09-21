@@ -22,8 +22,9 @@
     <![endif]-->
     <script>
       function add_fields(){
-        var input = '<input type="text" class="form-control" placeholder="Username">';
-        document.getElementById('input').innerHTML += input;
+        var newInput = document.createElement('span')
+        newInput.innerHTML = '<input type="text" class="form-control" placeholder="Username">';
+        document.getElementById('input').appendChild(newInput);
       }
     </script>
   </head>
