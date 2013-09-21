@@ -10,7 +10,7 @@
     <title>Navbar Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="navbar.css" rel="stylesheet">
@@ -22,9 +22,8 @@
     <![endif]-->
     <script>
       function add_fields(){
-        var newInput = document.createElement('span')
-        newInput.innerHTML = '<input type="text" class="form-control" placeholder="Username">';
-        document.getElementById('input').appendChild(newInput);
+        var input = '<input type="text" class="form-control" placeholder="http://steamcommunity.com/id/">';
+        document.getElementById('input').innerHTML += input;
       }
     </script>
   </head>
@@ -35,10 +34,7 @@
 
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <h1 align="center">Insert your Steam Accounts, bitches</h1>
-<br>
-        <center> <img src="steamicon.jpg" class="img-responsive" alt="Responsive image"> </center>
-<br>
+        <h1 align="center">Input your Steam Community IDs</h1>
         <div align="center" id="input">
           <input type="text" class="form-control" placeholder="Username">
           
