@@ -40,15 +40,15 @@
       <div class="jumbotron">
         <h1 align="center">Enter your Steam Account Handles</h1>
         <br>
-        <form action="localhost/submit/" method="Post">
+        <form action="/event" method="Post">
         <div align="center" id="input">
-          
             <input type="text" class="form-control" placeholder="Username">
-          
         </div>
+        </form>
+
         <div align="center">
-          <button class="btn btn-lg btn-primary" onclick="add_fields();">+</button>
-          <br>
+        <button class="btn btn-lg btn-primary" onclick="add_fields();">+</button>
+        <form action="/event" method="Post">
           <input type="submit" class="btn btn-lg btn-primary"></input>
         </div>
         </form>
