@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import url_for, redirect, request
 from flask import render_template
+from mongoengine import connect
 from flask.ext.mongoengine import MongoEngine
 import urllib2
 import json
@@ -18,12 +19,22 @@ key_search = re.search('(?<=mongolab=)(.*?)$', config, flags=re.MULTILINE)
 DB_USERNAME = key_search.group(0)
 key_search = re.search('(?<=mongolab_pass=)(.*?)$', config, flags=re.MULTILINE)
 DB_PASSWORD = key_search.group(0)
-key_search = re.search('(?<=mongodb_secret_key=)(.*?)'), config, flags=re.MULTILINE)
-app.config["SECRET_KEY"] = key_search.group(0)
+key_search = re.search('(?<=mongodb_secret_key=)(.*?)', config, flags=re.MULTILINE)
+SECRET_KEY = key_search.group(0)
 key_search = re.search('(?<=mongodb_name=)(.*?)$', config, flags=re.MULTILINE)
 DB_NAME = key_search.group(0)
 key_search = re.search('(?<=mongodb_url=)(.*?)$', config, flags=re.MULTILINE)
 DB_HOST_ADDRESS = key_search.group(0)
+#--------------------------------------------------------------------------------------------
+
+#setup database
+#--------------------------------------------------------------------------------------------
+app.config["MONGODB_DB"] = DB_NAME
+connect(DB_NAME, host='mongodb://' + DB_USERNAME + ':' + DB_PASSWORD + '@' + DB_HOST_ADDRESS)
+db = MongoEngine(app)
+
+app.config["MONGODB_SETTINGS"] = {'DB': "lan_tools"}
+app.config["SECRET_KEY"] = SECRET_KEY
 #--------------------------------------------------------------------------------------------
 
 
