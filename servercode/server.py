@@ -29,13 +29,13 @@ def get_community_id(steam_community_url):
 
 def get_owned_games(apikey, community_id):
 #returns a dictionary of appid keys and playtime_forever values for the profile
-	api_url = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=" + apikey + "&steamid=" + community_id + "&format=json"
+	api_url = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=" + apikey + "&steamid=" + community_id + "&format=json&include_appinfo=1&include_played_free_games=1"
 	response = urllib2.urlopen(api_url)
 	json_games = response.read()
 	games = json.JSONDecoder().decode(json_games)
 	games_dict = {}
 	for game in games['response']['games']:
-		games_dict[game['appid']] = game['playtime_forever']
+		games_dict[game['appid']] = {'playtime': game['playtime_forever'], 'name': game['name'], 'icon': get_image_url(game['appid'], game['img_icon_url']), 'logo': get_image_url(game['appid'], game['img_logo_url'])}
 	return games_dict
 
 def get_common_games(userlist):
@@ -51,13 +51,15 @@ def get_common_games(userlist):
 	return common_games
 
 def get_userlist(profile_urls):
-#get info on games for all users
+#get info owned games and playtime for all users
 	userlist = []
 	for profile_url in profile_urls:
 		cid = get_community_id(profile_url)
 		games = get_owned_games(apikey, cid)
 		userlist.append(games)
 
+def get_image_url(appid, img_hash):
+	return 'http://media.steampowered.com/steamcommunity/public/images/apps/'+ appid + '/' + img_hash + '.jpg'
 
 if __name__ == '__main__':
     app.run()
