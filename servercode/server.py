@@ -11,7 +11,7 @@ def hello_world():
     return 'Hello World!'
 
 def get_community_id(steam_community_url):
-	#returns JUST the number representing a user's community id
+#returns JUST the number representing a user's community id
 	def get_community_id(steam_community_url):
 	response = urllib2.urlopen(steam_community_url)
 	html = response.read()
@@ -21,7 +21,7 @@ def get_community_id(steam_community_url):
 	return community_id
 
 def get_owned_games(apikey, community_id):
-	#returns a dictionary of appid keys and playtime_forever values for the profile
+#returns a dictionary of appid keys and playtime_forever values for the profile
 	api_url = "http://api.steampowered.com/IPlayerService/GetOwnedGames/v0001/?key=" + apikey + "&steamid=" + community_id + "&format=json"
 	response = urllib2.urlopen(api_url)
 	json_games = response.read()
@@ -30,6 +30,29 @@ def get_owned_games(apikey, community_id):
 	for game in games['response']['games']:
 		games_dict[game['appid']] = game['playtime_forever']
 	return games_dict
+
+def get_common_games(userlist):
+#returns a set of appids that all users own
+	game_lists = []
+	for user in userlist:
+		game_list = []
+		for game in user:
+			game_list.append(game)		
+		game_lists.append(set(game_list))
+
+	common_games = set.intersection(*game_lists)
+	return common_games
+
+def analyze_profiles(profile_urls):
+	#get info on games for all users
+	userlist = []
+	for profile_url in profile_urls:
+		cid = get_community_id(profile_url)
+		games = get_owned_games(apikey, cid)
+		userlist.append(games)
+
+	#finds the games the users have in common
+	common_games = get_common_games(userlist)
 
 
 if __name__ == '__main__':
