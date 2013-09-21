@@ -50,16 +50,13 @@ def get_common_games(userlist):
 	common_games = set.intersection(*game_lists)
 	return common_games
 
-def analyze_profiles(profile_urls):
-	#get info on games for all users
+def get_userlist(profile_urls):
+#get info on games for all users
 	userlist = []
 	for profile_url in profile_urls:
 		cid = get_community_id(profile_url)
 		games = get_owned_games(apikey, cid)
 		userlist.append(games)
-
-	#finds the games the users have in common
-	common_games = get_common_games(userlist)
 
 
 if __name__ == '__main__':
