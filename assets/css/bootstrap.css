@@ -306,7 +306,10 @@ body {
   font-size: 14px;
   line-height: 1.428571429;
   color: #333333;
+  background-image: url("../img/debut_dark.png"); 
+  background-size: repeat;
   background-color: #ffffff;
+
 }
 
 input,
