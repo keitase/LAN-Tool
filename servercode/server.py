@@ -23,7 +23,7 @@ def get_community_id(steam_community_url):
 		community_id = community_id.rstrip('"')
 		return community_id
 
-@app.route('/submit/', methods=['POST'])
+@app.route('/event', methods=['POST'])
 def handle_data():
     projectpath = request.form.projectFilePath
     return projectpath
