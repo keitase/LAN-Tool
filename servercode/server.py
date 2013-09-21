@@ -69,12 +69,16 @@ def get_userlist(profile_urls):
 def get_image_url(appid, img_hash):
 	return 'http://media.steampowered.com/steamcommunity/public/images/apps/'+ str(appid) + '/' + str(img_hash) + '.jpg'
 
+
 #example code for printing all game names the group has in common
+"""
 profile_urls = ["http://steamcommunity.com/id/jacktastic", "http://steamcommunity.com/id/Pacothepenguin", "http://steamcommunity.com/id/zero1ne"]
 games = get_common_games(get_userlist(profile_urls))
 
+
 for game in games:
 	print games[game]['name']
+"""
 
 if __name__ == '__main__':
     app.run()
