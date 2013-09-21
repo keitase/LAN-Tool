@@ -39,7 +39,7 @@ def get_owned_games(apikey, community_id):
 	return games_dict
 
 def get_common_games(userlist):
-#returns a set of appids that all users own
+#returns a dictionary of games that all users own (keys are appids)
 	game_lists = []
 	for user in userlist:
 		game_list = []
@@ -47,7 +47,11 @@ def get_common_games(userlist):
 			game_list.append(game)		
 		game_lists.append(set(game_list))
 
-	common_games = set.intersection(*game_lists)
+	common_game_ids = set.intersection(*game_lists)
+
+	common_games = {}
+	for game_id in common_game_ids:
+		common_games[game_id] = userlist[0][game_id]
 	return common_games
 
 def get_userlist(profile_urls):
