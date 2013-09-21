@@ -10,7 +10,7 @@
     <title>Navbar Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="{{url_for('static',filename="assets/css/bootstrap.css")}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="navbar.css" rel="stylesheet">
@@ -27,7 +27,7 @@
     <script>
       function add_fields(){
         var newInput = document.createElement('span')
-        newInput.innerHTML = '<input type="text" class="form-control" placeholder="Username">';
+        newInput.innerHTML = '<input type="text" name="text" class="form-control" placeholder="Username">';
         document.getElementById('input').appendChild(newInput);
       }
     </script>
@@ -40,20 +40,16 @@
       <div class="jumbotron">
         <h1 align="center">Enter your Steam Account Handles</h1>
         <br>
-        <center> <img src="steamicon.jpg" class="img-responsive" alt="Responsive image"> </center>
-        <form action="localhost/submit/" method="Post">
-        <div align="center" id="input">
-          
-            <input type="text" class="form-control" placeholder="Username">
-          
-        </div>
         <div align="center">
+          <form action="/event" method="POST">
+          <div align="center" id="input">
+              <input type="text" name="text" class="form-control" placeholder="Username">
+          </div>
+          <input type="submit" class="btn btn-lg btn-primary" name="steamids"></input>
+          </form>
+
           <button class="btn btn-lg btn-primary" onclick="add_fields();">+</button>
-          <br>
-          <input type="submit" class="btn btn-lg btn-primary"></input>
         </div>
-        </form>
-          
         </p>
       </div>
 
@@ -64,6 +60,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
-    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
   </body>
 </html>
