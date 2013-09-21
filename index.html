@@ -38,14 +38,14 @@
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-<abbr title="Workload" class="initialism"><p class="scoreOther"><?php echo $clubDetails['scheduleFriendliness']; ?></p></abbr>
-        <h1 align="center"> <abbr title="We're going to help you have a great gaming experience!"> Enter your Steam Account Handles</abbr> </h1>
-<br>
+        <h1 align="center">Enter your Steam Account Handles</h1>
+        <br>
         <center> <img src="steamicon.jpg" class="img-responsive" alt="Responsive image"> </center>
 <br>
-        <div align="center" id="input">
-          <input type="text" class="form-control" placeholder="Username">
-          
+        <div align="center">
+          <form id="input">
+            <input type="text" class="form-control" placeholder="Username">
+          </form>
         </div>
         <div align="center">
           <button class="btn btn-lg btn-primary" onclick="add_fields();">+</button>
