@@ -3,6 +3,8 @@ import urllib2
 import re
 app = Flask(__name__)
 
+apikey = open('apikey.txt', 'r').read().rstrip('\n')
+
 @app.route('/')
 def hello_world():
     return 'Hello World!'
