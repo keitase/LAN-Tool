@@ -1,7 +1,6 @@
 from flask import Flask
 from flask import url_for, redirect, request
 from flask import render_template
-from mongoengine import connect
 from flask.ext.mongoengine import MongoEngine
 import urllib2
 import json
@@ -29,12 +28,9 @@ DB_HOST_ADDRESS = key_search.group(0)
 
 #setup database
 #--------------------------------------------------------------------------------------------
-app.config["MONGODB_DB"] = DB_NAME
-connect(DB_NAME, host='mongodb://' + DB_USERNAME + ':' + DB_PASSWORD + '@' + DB_HOST_ADDRESS)
-db = MongoEngine(app)
-
 app.config["MONGODB_SETTINGS"] = {'DB': "lan_tools"}
 app.config["SECRET_KEY"] = SECRET_KEY
+db = MongoEngine(app)
 #--------------------------------------------------------------------------------------------
 
 
