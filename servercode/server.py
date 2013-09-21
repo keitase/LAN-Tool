@@ -17,15 +17,17 @@ def hello_world():
 def index():
 	return "hello world!"
 
-def get_community_id(steam_community_url):
-#returns JUST the number representing a user's community id
-	def get_community_id(steam_community_url):
-		response = urllib2.urlopen(steam_community_url)
-		html = response.read()
-		search_results = re.search('(?<="steamid":")(.*?)"', html)
-		community_id = search_results.group(0)
-		community_id = community_id.rstrip('"')
-		return community_id
+def get_user_id(steam_community_url):
+#returns a tuple containing the number representing a user's community id and the display name of the user
+	response = urllib2.urlopen(steam_community_url)
+	html = response.read()
+	search_results = re.search('(?<="steamid":")(.*?)"', html)
+	community_id = search_results.group(0)
+	community_id = community_id.rstrip('"')
+	search_results = re.search('(?<="personaname":")(.*?)"', html)
+	display_name = search_results.group(0)
+	display_name = display_name.rstrip('"')
+	return [community_id, display_name]
 
 def get_owned_games(apikey, community_id):
 #returns a dictionary of appid keys and playtime_forever values for the profile
@@ -43,27 +45,30 @@ def get_common_games(userlist):
 	game_lists = []
 	for user in userlist:
 		game_list = []
-		for game in user:
+		for game in user[1]:
 			game_list.append(game)		
 		game_lists.append(set(game_list))
 
 	common_game_ids = set.intersection(*game_lists)
 
 	common_games = {}
+	print userlist[1][0][1]
 	for game_id in common_game_ids:
-		common_games[game_id] = userlist[0][game_id]
+		common_games[game_id] = userlist[0][1][game_id]
 	return common_games
 
 def get_userlist(profile_urls):
-#get info owned games and playtime for all users
+#returns a tuple containing [[community_id, display_name], games_dictionary]
 	userlist = []
 	for profile_url in profile_urls:
-		cid = get_community_id(profile_url)
-		games = get_owned_games(apikey, cid)
-		userlist.append(games)
+		user_id = get_user_id(profile_url)
+		games = get_owned_games(apikey, user_id[0])
+		userlist.append([user_id, games])
+
+	return userlist
 
 def get_image_url(appid, img_hash):
-	return 'http://media.steampowered.com/steamcommunity/public/images/apps/'+ appid + '/' + img_hash + '.jpg'
+	return 'http://media.steampowered.com/steamcommunity/public/images/apps/'+ str(appid) + '/' + str(img_hash) + '.jpg'
 
 if __name__ == '__main__':
     app.run()
