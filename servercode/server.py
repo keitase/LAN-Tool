@@ -1,13 +1,31 @@
 from flask import Flask
 from flask import url_for, redirect
 from flask import render_template
+from flask.ext.mongoengine import MongoEngine
 import urllib2
 import json
 import re
 app = Flask(__name__)
 app.debug = True
 
-apikey = open('apikey.txt', 'r').read().rstrip('\n')
+#get values from config file
+#--------------------------------------------------------------------------------------------
+config = open('config.ini').read()
+
+key_search = re.search('(?<=steam_api_key=)(.*?)$', config, flags=re.MULTILINE)
+apikey = key_search.group(0)
+key_search = re.search('(?<=mongolab=)(.*?)$', config, flags=re.MULTILINE)
+DB_USERNAME = key_search.group(0)
+key_search = re.search('(?<=mongolab_pass=)(.*?)$', config, flags=re.MULTILINE)
+DB_PASSWORD = key_search.group(0)
+key_search = re.search('(?<=mongodb_secret_key=)(.*?)'), config, flags=re.MULTILINE)
+app.config["SECRET_KEY"] = key_search.group(0)
+key_search = re.search('(?<=mongodb_name=)(.*?)$', config, flags=re.MULTILINE)
+DB_NAME = key_search.group(0)
+key_search = re.search('(?<=mongodb_url=)(.*?)$', config, flags=re.MULTILINE)
+DB_HOST_ADDRESS = key_search.group(0)
+#--------------------------------------------------------------------------------------------
+
 
 @app.route('/')
 def hello_world():
