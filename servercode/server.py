@@ -1,24 +1,31 @@
 from flask import Flask
+from flask import url_for, redirect
+from flask import render_template
 import urllib2
 import json
 import re
 app = Flask(__name__)
+app.debug = True
 
 apikey = open('apikey.txt', 'r').read().rstrip('\n')
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    return render_template("index.html")
+
+@app.route('/index')
+def index():
+	return "hello world!"
 
 def get_community_id(steam_community_url):
 #returns JUST the number representing a user's community id
 	def get_community_id(steam_community_url):
-	response = urllib2.urlopen(steam_community_url)
-	html = response.read()
-	search_results = re.search('(?<="steamid":")(.*?)"', html)
-	community_id = search_results.group(0)
-	community_id = community_id.rstrip('"')
-	return community_id
+		response = urllib2.urlopen(steam_community_url)
+		html = response.read()
+		search_results = re.search('(?<="steamid":")(.*?)"', html)
+		community_id = search_results.group(0)
+		community_id = community_id.rstrip('"')
+		return community_id
 
 def get_owned_games(apikey, community_id):
 #returns a dictionary of appid keys and playtime_forever values for the profile
