@@ -10,7 +10,7 @@
     <title>Navbar Template for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="{{url_for('static',filename="assets/css/bootstrap.css")}}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="navbar.css" rel="stylesheet">
@@ -40,7 +40,6 @@
       <div class="jumbotron">
         <h1 align="center">Enter your Steam Account Handles</h1>
         <br>
-        <center> <img src="steamicon.jpg" class="img-responsive" alt="Responsive image"> </center>
         <form action="localhost/submit/" method="Post">
         <div align="center" id="input">
           
@@ -64,6 +63,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="assets/js/jquery.js"></script>
-    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
   </body>
 </html>
