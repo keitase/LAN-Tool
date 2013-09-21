@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+    <title>Navbar Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="navbar.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../../assets/js/html5shiv.js"></script>
+      <script src="../../assets/js/respond.min.js"></script>
+    <![endif]-->
+    <script>
+      function add_fields(){
+        var input = '<input type="text" class="form-control" placeholder="Username">';
+        document.getElementById('input').innerHTML += input;
+      }
+    </script>
+  </head>
+
+  <body>
+
+    <div class="container">
+
+      <!-- Main component for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1 align="center">Insert your Steam Accounts</h1>
+        <div align="center" id="input">
+          <input type="text" class="form-control" placeholder="Username">
+          
+        </div>
+        <div align="center">
+          <button class="btn btn-lg btn-primary" onclick="add_fields();">+</button>
+          <br>
+          <a class="btn btn-lg btn-primary" href="../../components/#navbar" role="button">Create Event</a>
+        </div>
+          
+        </p>
+      </div>
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="assets/js/jquery.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+  </body>
+</html>
