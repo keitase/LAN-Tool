@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+  <style type = "text/css">
+  #div1, #div2
+   {float:left; width:100px; height:35px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
+   #gameframe {float:right; width:200px; height:80px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
+    </style>
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -8,15 +14,12 @@
     <link rel="shortcut icon" href="assets/ico/favicon.png">
 
     <title>Scheduling Page</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="navbar.css" rel="stylesheet">
  
 <script>
-
 function allowDrop(ev)
 {
 ev.preventDefault();
@@ -35,12 +38,7 @@ ev.target.appendChild(document.getElementById(data));
 }
 </script>
   
-  </head>
-
-  <style type = "text/css">
-  #gameframe {float:right; width:200px; height:80px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
-  #div1 {float:left; width:100px; height:35px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
-  </style> 
+</head>
 
   <body>
 
@@ -51,30 +49,33 @@ ev.target.appendChild(document.getElementById(data));
 <br>
 <!--Amit's calendar code here -->
 
-<body bgcolor="#003399">
+<!-- <body bgcolor="#003399"> -->
 
 <!-- Start Gaming Schedule by day -->
 <div align="center"><p><font face="Arial" size="6" color="#000000">Your Gaming Schedule</font></p></div>
 
 <!-- This is where I'm gonna test my javascript shit  -->
 
-<div id = "gameframe" ondrop="drop(event)" ondragover="allowDrop(event)"> <img src = "aboutpage.jpg" width="184" height="69" draggable="true" > 
-</div>
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+  <img src="http://images.thesource.com.s3.amazonaws.com/wp-content/uploads/2013/08/MJ-wallpapers-michael-jackson-31128130-1600-1200.jpg" draggable="true" ondragstart="drag(event)" id="drag1" width="88" height="31"></div>
 
 <!--  yeah  -->
 
 <table width="40%" cellpadding="4" cellspacing="0" border="1" bordercolor="#003399" bgcolor="#003399">
   <tr>
      <td  bgcolor="#0099CC" height = "30px;" width="30px;" align="center" valign="middle"><font color="#FFFFFF" face="Arial" size="2">00:00</font></td> </div>
-    <td bgcolor="#0080C0" width="100px;" align="left" valign="top">
-        <br>&nbsp;<br>&nbsp;<br></font></td>
+    <td bgcolor="#0080C0" width="100px;" align="left" valign="top"> <div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </td>
   </tr>
   <tr>
   <td bgcolor="#0099CC" width="20%" align="center" valign="middle"><font color="#FFFFFF" face="Arial" size="4">01:00</font></td>
-  <td bgcolor="#0080C0" width="14%" align="left" valign="top"><div align="right"><font color="#FFFFFF" face="Arial" size="2">
-      </font></div><font color="#FFFFFF" face="Arial" size="2">
+  <td bgcolor="#0080C0" width="14%" align="left" valign="top"><div align="right"><font color="#FFFFFF" face="Arial" size="4">
+      </font></div>
+
+      <font color="#FFFFFF" face="Arial" size="4">
         <br>&nbsp;<br>&nbsp;<br></font></td>
   </tr>
+  
   <tr>
   <td bgcolor="#0099CC" width="30%" align="center" valign="middle"><font color="#FFFFFF" face="Arial" size="4">02:00</font></td>
   <td bgcolor="#0080C0" width="14%" align="left" valign="top"><div align="right"><font color="#FFFFFF" face="Arial" size="2">
