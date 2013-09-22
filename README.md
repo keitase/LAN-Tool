@@ -1,9 +1,9 @@
-Lan-Tool
+LANtern
 ========
 
-LAN Tool
+LAN Organization for Anyone
 
-An extensive tool used to organize and create tournaments.
+A lightweight, efficient way to organize LAN parties and gaming events
 
 Dependencies to host
 MongoDB
