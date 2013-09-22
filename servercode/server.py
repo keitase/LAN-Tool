@@ -1,13 +1,38 @@
 from flask import Flask
-from flask import url_for, redirect
+from flask import url_for, redirect, request
 from flask import render_template
+from flask.ext.mongoengine import MongoEngine
 import urllib2
 import json
 import re
 app = Flask(__name__)
 app.debug = True
 
-apikey = open('apikey.txt', 'r').read().rstrip('\n')
+#get values from config file
+#--------------------------------------------------------------------------------------------
+config = open('config.ini').read()
+
+key_search = re.search('(?<=steam_api_key=)(.*?)$', config, flags=re.MULTILINE)
+apikey = key_search.group(0)
+key_search = re.search('(?<=mongolab=)(.*?)$', config, flags=re.MULTILINE)
+DB_USERNAME = key_search.group(0)
+key_search = re.search('(?<=mongolab_pass=)(.*?)$', config, flags=re.MULTILINE)
+DB_PASSWORD = key_search.group(0)
+key_search = re.search('(?<=mongodb_secret_key=)(.*?)', config, flags=re.MULTILINE)
+SECRET_KEY = key_search.group(0)
+key_search = re.search('(?<=mongodb_name=)(.*?)$', config, flags=re.MULTILINE)
+DB_NAME = key_search.group(0)
+key_search = re.search('(?<=mongodb_url=)(.*?)$', config, flags=re.MULTILINE)
+DB_HOST_ADDRESS = key_search.group(0)
+#--------------------------------------------------------------------------------------------
+
+#setup database
+#--------------------------------------------------------------------------------------------
+app.config["MONGODB_SETTINGS"] = {'DB': "lan_tools"}
+app.config["SECRET_KEY"] = SECRET_KEY
+db = MongoEngine(app)
+#--------------------------------------------------------------------------------------------
+
 
 @app.route('/')
 def hello_world():
@@ -16,6 +41,13 @@ def hello_world():
 @app.route('/index')
 def index():
 	return "hello world!"
+
+@app.route('/event', methods=['POST'])
+def event():
+	profile_urls = request.form.getlist('text')
+	games = get_common_games(get_userlist(profile_urls))
+	return render_template("event.html", games=games)
+
 
 def get_user_id(steam_community_url):
 #returns a tuple containing the number representing a user's community id and the display name of the user
