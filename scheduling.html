@@ -14,29 +14,40 @@
 
     <!-- Custom styles for this template -->
     <link href="navbar.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="../../assets/js/html5shiv.js"></script>
-      <script src="../../assets/js/respond.min.js"></script>
-    <![endif]-->  
-
  
-    <script>
-      function add_fields(){
-        var newInput = document.createElement('span')
-        newInput.innerHTML = '<input type="text" class="form-control" placeholder="Username">';
-        document.getElementById('input').appendChild(newInput);
-      }
-    </script>
+<script>
+
+function allowDrop(ev)
+{
+ev.preventDefault();
+}
+
+function drag(ev)
+{
+ev.dataTransfer.setData("Text",ev.target.id);
+}
+
+function drop(ev)
+{
+ev.preventDefault();
+var data=ev.dataTransfer.getData("Text");
+ev.target.appendChild(document.getElementById(data));
+}
+</script>
+  
   </head>
+
+  <style type = "text/css">
+  #gameframe {float:right; width:200px; height:80px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
+  #div1 {float:left; width:100px; height:35px; margin:10px;padding:10px;border:1px solid #aaaaaa;}
+  </style> 
 
   <body>
 
     <div class="container">
       <!-- Main component for a primary marketing message or call to action -->
       <div class="jumbotron">
-        <center> <img src="steamicon.jpg" class="img-responsive" alt="Responsive image"> </center>
+       <center> <img src="steamicon.jpg" class="img-responsive" alt="Responsive image"> </center>
 <br>
 <!--Amit's calendar code here -->
 
@@ -45,13 +56,17 @@
 <!-- Start Gaming Schedule by day -->
 <div align="center"><p><font face="Arial" size="6" color="#000000">Your Gaming Schedule</font></p></div>
 
-<!--Days of the week, printout-->
+<!-- This is where I'm gonna test my javascript shit  -->
+
+<div id = "gameframe" ondrop="drop(event)" ondragover="allowDrop(event)"> <img src = "aboutpage.jpg" width="184" height="69" draggable="true" > 
+</div>
+
+<!--  yeah  -->
 
 <table width="40%" cellpadding="4" cellspacing="0" border="1" bordercolor="#003399" bgcolor="#003399">
   <tr>
-    <td bgcolor="#0099CC" height = "30px;" width="30px;" align="center" valign="middle"><font color="#FFFFFF" face="Arial" size="2">00:00</font></td>
-    <td bgcolor="#0080C0" width="100px;" align="left" valign="top"><div align="right"><font color="#FFFFFF" face="Arial" size="4">
-      </font></div><font color="#FFFFFF" face="Arial" size="4">
+     <td  bgcolor="#0099CC" height = "30px;" width="30px;" align="center" valign="middle"><font color="#FFFFFF" face="Arial" size="2">00:00</font></td> </div>
+    <td bgcolor="#0080C0" width="100px;" align="left" valign="top">
         <br>&nbsp;<br>&nbsp;<br></font></td>
   </tr>
   <tr>
@@ -204,30 +219,19 @@
         <br>&nbsp;<br>&nbsp;<br></font></td>
   </tr>
 
-<!--Beginning of fifth week of month-->
-
 <!--Because there are only two days in the fifth week of this month, the final table data (td) tag contains coding to fill
 the rest of this week with the background of the table (below)-->
 
   <!--  <td colspan="5"><font size="2"><br>&nbsp;<br>&nbsp;<br>&nbsp;</font></td> -->
 </table>
-<!-- End Calendar, Jun 2008-->
 <br>
-<br>
-<input type="submit" class="btn btn-lg btn-primary" action = "successful.html"></input>
+<!-- <input type="submit" class="btn btn-lg btn-prmary" action = "successful.html"></input> -->
 </div>
 <!--  end of Amit's calendar -->
         </div>
           <br>
         </p>
       </div>
-
-
-
-
-<!----- Begin Footer ----->
-<br><center><table bgcolor="#FFFFFF"><tr><td align="center"><font face="Georgia,Arial" size="4" color="#000000"><b>Created with <a href="http://www.htmlcalendar.com">HTML Calendar Maker Pro</a>.</b></font><br><font face="Georgia,Arial" size="3" color="#000000">Visit <a href="http://www.htmlcalendar.com">www.htmlcalendar.com</a> for the latest version!<br>To get a registration code that gives you more calendars<br>and that lets you modify or remove this footer, go to the <a href="http://www.htmlcalendar.com/products/windows/order">Online Order Form</a>.</font></td></tr></table>
-<!-- End Footer -->
 
 </body>
 </html>
