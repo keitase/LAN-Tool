@@ -13,9 +13,14 @@ Third Page
 
 
 Possible Features
+=================
+
 - Recommend games that ALMOST everyone has
 - Recommend free-to-play games for groups with low games-in-common
-- LAN-Vision: A large screen meant to be displayed on a TV or monitor with match timers, custom messages (ip of host, food info), photos from the event
+- LAN-Vision 
+	- A large screen meant to be displayed on a TV or monitor 
+	- Match timers, custom messages (ip of host, food info)
+	- Could have event-related photos/screenshots or tweets (host inputs hashtag) periodically shown
 - Email System
 	- Generates custom URLs for each attendee to RSVP
 	- Attendees custom URLs can be used to vote/influence which games are played and for how long
