@@ -1,0 +1,18 @@
+body {
+	padding: 30px;
+}
+
+.navbar {
+	margin-bottom: 30px;
+}
+
+.container {
+
+}
+
+#schedule {
+	border-radius: 3px;
+	border-width: 1px;
+	border-color: black;
+	height: 1200px;
+}
