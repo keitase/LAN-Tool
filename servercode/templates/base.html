@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+         <!-- CSS -->
+        <link href="{{url_for('static',filename="assets/css/bootstrap.css")}}" rel="stylesheet">
+        <link rel="shortcut icon" href="{{url_for('static',filename="assets/ico/favicon.png")}}">
+        <link href="{{url_for('static',filename="assets/css/lanstyle.css")}}" rel="stylesheet">
+
+        {%if page_title %}
+        <title>{{page_title}} - LANtern</title>
+        {% else %}
+        <title>LANtern</title>
+        {% endif %}
+
+        <!-- jQuery UI -->
+        <link href="{{url_for('static',filename="assets/css/ui-lightness/jquery-ui-1.10.3.custom.css")}}" rel="stylesheet">
+        <script src="{{url_for('static',filename="assets/js/jquery-1.9.1.js")}}"></script>
+        <script src="{{url_for('static',filename="assets/js/jquery-ui-1.10.3.custom.js")}}"></script>
+    </head>
+    {% block body %}{%endblock%}
+
+<!-- bootstrap -->
+
+</html>

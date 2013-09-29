@@ -34,19 +34,40 @@ db = MongoEngine(app)
 #--------------------------------------------------------------------------------------------
 
 
+
+
+#--------------------------------------------------------------------------------------------
+#
+#										Page Routing
+#
+#--------------------------------------------------------------------------------------------
 @app.route('/')
-def hello_world():
+def _():
     return render_template("index.html")
 
 @app.route('/index')
 def index():
-	return "hello world!"
+	return _()
 
 @app.route('/event', methods=['POST'])
 def event():
 	profile_urls = request.form.getlist('text')
 	games = get_common_games(get_userlist(profile_urls))
 	return render_template("scheduling.html", games=games)
+
+@app.route('/jq')
+def jq():
+	return render_template("jqueryui_example.html")
+
+@app.route('/world')
+def world():
+	return "Hello World!"
+
+#--------------------------------------------------------------------------------------------
+#
+#									Steam API Methods
+#
+#--------------------------------------------------------------------------------------------
 
 
 def get_user_id(steam_community_url):
