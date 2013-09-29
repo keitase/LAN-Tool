@@ -25,13 +25,16 @@
     </div>
     <div class="container" id="timeslots">
     	<div class="timeslot">
+	     </div>
+
+	     <div class="timeslot">
       	</div>
     </div>
 
     <div class="container" id="gamelist">
     	{% for game in games %}
-        <div id="gameframe" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <img src="{{ games[game]['logo']}}" draggable="true" ondragstart="drag(event)" id="{{ games[game]['name']}}" width="292" height="136" />
+        <div class="gameframe" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <img src="{{games[game]['logo']}}" draggable="true" ondragstart="drag(event)" alt="{{games[game]['name']}}" id="{{games[game]['name']}}" width="292" height="136" />
         </div> 
     	{% endfor %}
     </div>

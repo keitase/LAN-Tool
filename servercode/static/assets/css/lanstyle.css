@@ -1,5 +1,6 @@
 body {
 	padding: 30px;
+	font: arial;
 }
 
 .navbar {
@@ -10,9 +11,30 @@ body {
 
 }
 
+.class {
+
+}
+
+.time {
+	height: 100px;
+	font-size: 20pt;
+}
+
+.timeslot {
+
+}
+
+#gamelist {
+	width: 30%;
+}
+
 #schedule {
 	border-radius: 3px;
 	border-width: 1px;
 	border-color: black;
-	height: 1200px;
+	width: 20%;
+}
+
+#timeslots {
+	width: 50%;
 }
