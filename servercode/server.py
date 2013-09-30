@@ -53,7 +53,7 @@ def index():
 def event():
 	profile_urls = request.form.getlist('text')
 	games = get_common_games(get_userlist(profile_urls))
-	return render_template("scheduling.html", games=games)
+	return render_template("schedule.html", games=games)
 
 @app.route('/jq')
 def jq():

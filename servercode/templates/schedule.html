@@ -34,7 +34,7 @@
     <div class="container" id="gamelist">
     	{% for game in games %}
         <div class="gameframe" ondrop="drop(event)" ondragover="allowDrop(event)">
-            <img src="{{games[game]['logo']}}" draggable="true" ondragstart="drag(event)" alt="{{games[game]['name']}}" id="{{games[game]['name']}}" width="292" height="136" />
+            <img src="{{games[game]['logo']}}" draggable="true" ondragstart="drag(event)" alt="{{games[game]['name']}}" id="{{games[game]['name']}}" width="184" height="69" />
         </div> 
     	{% endfor %}
     </div>
