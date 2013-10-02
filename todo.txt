@@ -1,8 +1,14 @@
 To-do
 =====
 
+Data Pulling
+- Filter out games that are not listed as having multiplayer
+- Find a way to filter out tools (Portal 2 editor, etc)
+- For broken images, display the app's name on a colored background
+
 Second Page
-- Reorganize second page (game/scheduling selection)
+- Fill in page elements (calendar, slots)
+- Implement drag and drop
 - Implement scaling on second page
 
 Third Page
@@ -11,12 +17,20 @@ Third Page
 - Implement swiss rounds
 - Implement team composition/editing
 
+Database
+- Persistently store data for users of the page
+- Refreshes/restores data when a previous user uses the page again
+- Run small batch updates of usernames periodically
+
 
 Possible Features
 =================
 
 - Recommend games that ALMOST everyone has
 - Recommend free-to-play games for groups with low games-in-common
+- Full recommendation engine
+	- With a large database for model training, use machine learning to recommend games
+	- Take into account time played for each game
 - LAN-Vision 
 	- A large screen meant to be displayed on a TV or monitor 
 	- Match timers, custom messages (ip of host, food info)
