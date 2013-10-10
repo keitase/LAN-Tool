@@ -1,5 +1,6 @@
 test.py
 config.ini
+apikey.txt
 
 lib-cov
 *.seed
